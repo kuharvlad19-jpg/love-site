@@ -1,1 +1,95 @@
+<!DOCTYPE html>
 
+<html lang="uk">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Для тебе ❤️</title>
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  text-align: center;
+
+  font-family: -apple-system, sans-serif;
+
+  color: white;
+
+  background: radial-gradient(circle, #58152d, #16030b 75%);
+
+  overflow: hidden;
+
+}
+
+h1 { color: #ffc1d2; font-size: 27px; }
+
+p { color: #ffe2eb; font-size: 18px; }
+
+.heart {
+
+  display: inline-block;
+
+  font-size: 130px;
+
+  text-decoration: none;
+
+  filter: drop-shadow(0 0 25px #ff174f);
+
+  animation: pulse 1s infinite alternate;
+
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+@keyframes pulse {
+
+  from { transform: scale(1); }
+
+  to { transform: scale(1.18); }
+
+}
+
+.heart:active { transform: scale(.9); }
+
+.hint { font-size: 14px; color: #ff9bb8; margin-top: 18px; }
+
+</style>
+
+</head>
+
+<body>
+
+  <h1>У мене є дещо для тебе 💌</h1>
+
+  <a class="heart"
+
+     href="https://kuharvlad19-jpg.github.io/love-site/"
+
+     aria-label="Відкрити наш сайт">❤️</a>
+
+  <p>Моя кохана, натисни на сердечко 🥹</p>
+
+  <div class="hint">Там на тебе чекає сюрприз 💕</div>
+
+</body>
+
+</html>
