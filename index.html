@@ -8,27 +8,19 @@
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: #120207;
             background: linear-gradient(180deg, #1a030c 0%, #0d0105 50%, #1a030c 100%);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #ffffff;
-            text-align: center;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
+            color: #ffffff; text-align: center;
+            overflow-x: hidden; position: relative; min-height: 100vh;
         }
-
-        /* Романтичні неонові літаючих сердечка на фоні */
         .hearts-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             overflow: hidden; z-index: 1; pointer-events: none;
         }
         .heart-particle {
-            position: absolute; bottom: -50px;
-            font-size: 20px; opacity: 0;
+            position: absolute; bottom: -50px; font-size: 20px; opacity: 0;
             text-shadow: 0 0 10px rgba(255, 20, 147, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
             animation: flyUp 7s linear infinite;
         }
@@ -38,194 +30,51 @@
             90% { opacity: 0.6; }
             100% { transform: translateY(-105vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
-
-        .wrap {
-            max-width: 450px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            padding: 20px 15px 140px;
-        }
-
-        /* ЕКРАН 1: НАША ІСТОРІЯ */
+        .wrap { max-width: 450px; margin: 0 auto; position: relative; z-index: 2; padding: 0 15px 140px; }
         .main-screen {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 0;
+            min-height: 90vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 20px 0;
         }
         .big-heart {
-            font-size: 80px;
-            margin-bottom: 20px;
-            display: inline-block;
+            font-size: 80px; margin-bottom: 20px; display: inline-block;
             animation: pulse 1.2s infinite alternate cubic-bezier(0.215, 0.610, 0.355, 1);
             filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6));
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-        .tagline {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #ff85a2;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-        h1 {
-            font-size: 3rem;
-            margin: 0 0 25px 0;
-            font-weight: 800;
-            line-height: 1.2;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        }
-        .description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #f0e2e5;
-            max-width: 400px;
-            margin: 0 auto;
-            opacity: 0.95;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
-        /* ЕКРАН 2: ПЛЕЄР ТА ТЕКСТ */
-        h3 {
-            font-size: 1.2rem;
-            color: #ffb3c1;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        .tagline { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 4px; color: #ff85a2; margin-bottom: 10px; opacity: 0.9; }
+        h1 { font-size: 3rem; margin: 0 0 25px 0; font-weight: 800; line-height: 1.2; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
+        .description { font-size: 1.2rem; line-height: 1.6; color: #f0e2e5; max-width: 400px; margin: 0 auto; opacity: 0.95; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+        h3 { font-size: 1.2rem; color: #ffb3c1; margin-top: 40px; margin-bottom: 15px; font-weight: 500; }
         .player-container {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 77, 109, 0.2);
-            padding: 20px 15px;
-            border-radius: 24px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 77, 109, 0.2);
+            padding: 20px 15px; border-radius: 24px; margin-bottom: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
-        .music-status {
-            font-size: 0.9rem;
-            color: #ffb3c1;
-            margin: 10px 0;
-            opacity: 0.8;
-            font-weight: bold;
-        }
-        audio {
-            width: 100%;
-            height: 36px;
-            border-radius: 50px;
-            margin-top: 5px;
-        }
+        .music-status { font-size: 0.9rem; color: #ffb3c1; margin: 10px 0; opacity: 0.8; font-weight: bold; }
+        audio { width: 100%; height: 36px; border-radius: 50px; margin-top: 5px; }
         .btn-surprise {
-            background: #ffffff;
-            color: #670822;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-            margin-bottom: 45px;
-            display: inline-block;
-            cursor: pointer;
-            transition: transform 0.2s;
+            background: #ffffff; color: #670822; border: none; padding: 14px 28px; border-radius: 30px;
+            font-size: 1.1rem; font-weight: bold; box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            margin-bottom: 45px; display: inline-block; cursor: pointer; transition: transform 0.2s;
         }
         .btn-surprise:active { transform: scale(0.95); }
-
-        /* Блоки карток із текстом */
         .text-card {
-            background: rgba(27, 8, 14, 0.65);
-            border: 1px solid rgba(255, 77, 109, 0.15);
-            border-radius: 24px;
-            padding: 35px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            text-align: center;
-            margin-bottom: 25px;
+            background: rgba(27, 8, 14, 0.65); border: 1px solid rgba(255, 77, 109, 0.15);
+            border-radius: 24px; padding: 35px 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); text-align: center; margin-bottom: 25px;
         }
-        .text-card h2.title-glow {
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-weight: bold;
-            text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
-        }
-        .text-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 20px 0;
-            color: #ffe6eb;
-        }
-        .text-card h2.final-kiss {
-            font-size: 1.6rem;
-            margin-top: 30px;
-            margin-bottom: 0;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-        }
-
-        /* Маленькі картки спогадів */
-        .memory-subcard {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: left;
-            margin-bottom: 15px;
-            border-left: 4px solid #ff4d6d;
-        }
-        .memory-subcard h4 {
-            margin: 0 0 8px 0;
-            font-size: 1.15rem;
-            color: #ff85a2;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .memory-subcard p {
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #f0e2e5;
-        }
-
-        /* Блок листа «Я тебе кохаю» */
-        .envelope-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .footer-text {
-            font-size: 1rem;
-            color: #ff85a2;
-            margin-top: 50px;
-            opacity: 0.8;
-        }
-
-        /* Блок галереї фотографій */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 15px;
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        .text-card h2.title-glow { font-size: 2.2rem; margin-top: 0; margin-bottom: 25px; font-weight: bold; text-shadow: 0 0 15px rgba(255, 77, 109, 0.6); }
+        .text-card p { font-size: 1.1rem; line-height: 1.8; margin: 20px 0; color: #ffe6eb; }
+        .text-card h2.final-kiss { font-size: 1.6rem; margin-top: 30px; margin-bottom: 0; color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
+        .memory-subcard { background: rgba(255, 255, 255, 0.04); border-radius: 16px; padding: 20px; text-align: left; margin-bottom: 15px; border-left: 4px solid #ff4d6d; }
+        .memory-subcard h4 { margin: 0 0 8px 0; font-size: 1.15rem; color: #ff85a2; display: flex; align-items: center; gap: 8px; }
+        .memory-subcard p { margin: 0; font-size: 1rem; line-height: 1.5; color: #f0e2e5; }
+        .envelope-icon { font-size: 45px; margin-bottom: 15px; display: inline-block; }
+        .footer-text { font-size: 1rem; color: #ff85a2; margin-top: 50px; opacity: 0.8; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+        .gallery-grid img { width: 100%; height: 140px; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <!-- Літаючі сердечка на фоні -->
     <div class="hearts-bg">
         <span class="heart-particle" style="left:8%; animation-delay:0s; animation-duration:6s;">❤️</span>
         <span class="heart-particle" style="left:28%; animation-delay:2s; animation-duration:8s;">💕</span>
@@ -248,7 +97,7 @@
         
         <div class="player-container">
             <div class="music-status">🎵 Меладзе & i got love</div>
-            <audio src="https://muzkach.net/49343-franliz-meladze-h-miyagi-i-got-love-mashup.html"
+            <audio src="https://muzkach.net" controls loop></audio>
         </div>
 
         <button class="btn-surprise" onclick="alert('Ти моє найбільше щастя! 🥰💋')">💝 Натисни на мене</button>
@@ -267,7 +116,7 @@
         <!-- БЛОК НАШІ МОМЕНТИ -->
         <div class="text-card">
             <h2 class="title-glow" style="font-size: 2rem;">Наші моменти 📸</h2>
-            <p style="margin: -10px 0 20px; color: #ffb3c1;">Наші фотографії ❤️</p>
+            <p style="margin: -10px 0 20px; color: #ffb3c1;">Наші photoграфії ❤️</p>
             <div class="gallery-grid">
                 <img src="photo1.jpg.JPG" alt="Миті 1">
                 <img src="photo2.jpg.JPG" alt="Миті 2">
@@ -283,15 +132,30 @@
         <!-- БЛОК СПОГАДІВ -->
         <div class="text-card">
             <h2 class="title-glow" style="font-size: 1.9rem; margin-bottom: 25px;">І це тільки початок ✨</h2>
-            
             <div class="memory-subcard">
                 <h4>🤍 Наші обійми</h4>
                 <p>Місце, де завжди добре.</p>
             </div>
-            
             <div class="memory-subcard">
                 <h4>🌙 Наші вечори</h4>
                 <p>Навіть звичайний вечір з тобою стає особливим.</p>
             </div>
-            
             <div class="memory-subcard">
+                <h4>♾️ Наші плани</h4>
+                <p>Нехай попереду буде ще дуже багато наших «вперше». 💕</p>
+            </div>
+        </div>
+
+        <div class="text-card">
+            <div class="envelope-icon">💌</div>
+            <h2 style="font-size:2rem; margin:0 0 15px 0; font-weight:bold;">Я тебе кохаю</h2>
+            <p style="font-size:1.05rem; color:#ffe6eb; line-height:1.6; margin:0;">
+                З 6 місяцями нас. І нехай це буде лише одна з дуже-дуже багатьох наших дат. 💕🎁
+            </p>
+        </div>
+
+        <div class="footer-text">зроблено з любов'ю ❤️</div>
+    </div>
+
+</body>
+</html>
