@@ -1,1532 +1,265 @@
-index.html
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#35131e">
-<title>6 місяців разом ❤️</title>
-
-<style>
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  min-height:100vh;
-  color:#fff8fb;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:
-    radial-gradient(circle at 15% 5%,rgba(255,150,170,.25),transparent 32%),
-    radial-gradient(circle at 90% 25%,rgba(255,190,120,.20),transparent 30%),
-    radial-gradient(circle at 50% 100%,rgba(255,100,150,.18),transparent 40%),
-    linear-gradient(145deg,#160910,#35131e,#210b15);
-}
-
-.wrap{
-  max-width:760px;
-  margin:auto;
-  padding:20px 14px 70px;
-  position:relative;
-  z-index:2;
-}
-
-/* INTRO */
-
-.intro-screen{
-  position:fixed;
-  inset:0;
-  z-index:10000;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:28px;
-  background:
-    radial-gradient(circle at 50% 30%,#8f2852 0%,#4b0c29 45%,#16030d 100%);
-  transition:opacity 1s ease,visibility 1s ease;
-}
-
-.intro-screen.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-
-.intro-heart{
-  font-size:75px;
-  animation:heartBeat 1.2s infinite;
-}
-
-@keyframes heartBeat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.18)}
-}
-
-.intro-screen h1{
-  font-size:clamp(30px,8vw,50px);
-  margin:15px 0 10px;
-}
-
-.intro-screen p{
-  color:#ffe4ed;
-  font-size:18px;
-  margin:0 0 25px;
-}
-
-/* BUTTONS */
-
-button,
-.btn{
-  border:0;
-  border-radius:999px;
-  padding:14px 23px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.btn{
-  display:inline-block;
-  text-decoration:none;
-  color:white;
-  background:linear-gradient(135deg,#ff76a5,#ff3f78);
-  box-shadow:0 10px 30px rgba(255,70,120,.3);
-}
-
-.intro-btn{
-  background:white;
-  color:#8b1748;
-  box-shadow:0 10px 35px rgba(0,0,0,.3);
-}
-
-/* HERO */
-
-.hero{
-  min-height:90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.hero-heart{
-  font-size:60px;
-  animation:heartBeat 1.7s infinite;
-}
-
-.kicker{
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:#ffb3c9;
-  font-size:12px;
-  margin-top:10px;
-}
-
-h1{
-  font-size:clamp(44px,12vw,82px);
-  line-height:.95;
-  margin:18px 0;
-}
-
-.subtitle{
-  color:#d9c2cb;
-  font-size:18px;
-  line-height:1.7;
-  max-width:560px;
-}
-
-/* CARDS */
-
-.section{
-  margin:35px 0;
-}
-
-.card{
-  background:rgba(29,17,28,.78);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:28px;
-  padding:24px;
-  box-shadow:0 20px 70px rgba(0,0,0,.3);
-}
-
-h2{
-  font-size:30px;
-  margin:0 0 12px;
-}
-
-p{
-  color:#d4c0c9;
-  line-height:1.7;
-}
-
-/* MUSIC */
-
-.music-panel{
-  text-align:center;
-}
-
-.music-icon{
-  font-size:42px;
-}
-
-.music-input{
-  display:none;
-}
-
-.music-name{
-  font-size:13px;
-  opacity:.75;
-  margin-top:10px;
-}
-
-audio{
-  width:100%;
-  margin-top:15px;
-}
-
-/* LOVE TEXT */
-
-.love-text{
-  margin:18px auto 0;
-  max-width:700px;
-  text-align:center;
-  line-height:1.8;
-}
-
-.love-line{
-  opacity:0;
-  transform:translateY(18px);
-  filter:blur(4px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease,
-    filter 1s ease;
-  margin:10px 0;
-}
-
-.love-line.show{
-  opacity:1;
-  transform:translateY(0);
-  filter:blur(0);
-}
-
-.love-line.highlight{
-  font-size:1.3em;
-  font-weight:700;
-  color:#fff;
-}
-
-/* PHOTOS */
-
-.gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.gallery img{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  border-radius:20px;
-  cursor:pointer;
-  opacity:0;
-  transform:translateY(30px) scale(.95);
-  filter:blur(5px);
-  transition:
-    opacity .8s ease,
-    transform .8s ease,
-    filter .8s ease;
-}
-
-.gallery img.show{
-  opacity:1;
-  transform:translateY(0) scale(1);
-  filter:blur(0);
-}
-
-@media(max-width:520px){
-  .gallery img{
-    height:210px;
-  }
-}
-
-/* MEMORIES */
-
-.memory{
-  padding:18px;
-  border-radius:20px;
-  background:rgba(255,255,255,.05);
-  margin:10px 0;
-}
-
-.memory b{
-  color:#fff;
-}
-
-/* SURPRISE */
-
-.surprise-wrap{
-  text-align:center;
-  margin:35px 0;
-}
-
-.surprise-btn{
-  color:#8b1748;
-  background:white;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-
-.secret-message{
-  max-height:0;
-  overflow:hidden;
-  opacity:0;
-  transform:translateY(15px);
-  transition:
-    max-height 1s ease,
-    opacity 1s ease,
-    transform 1s ease;
-}
-
-.secret-message.open{
-  max-height:500px;
-  opacity:1;
-  transform:translateY(0);
-}
-
-.secret-heart{
-  display:block;
-  font-size:50px;
-  margin:15px;
-}
-
-/* LIGHTBOX */
-
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:20000;
-  padding:20px;
-}
-
-.lightbox.show{
-  display:flex;
-}
-
-.lightbox img{
-  max-width:100%;
-  max-height:90vh;
-  border-radius:18px;
-}
-
-.close-photo{
-  position:absolute;
-  top:20px;
-  right:20px;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  font-size:25px;
-}
-
-/* FLOATING HEARTS */
-
-.floating-hearts{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:9999;
-}
-
-.floating-heart{
-  position:absolute;
-  bottom:-60px;
-  font-size:var(--size);
-  animation:floatHeart var(--duration) linear forwards;
-  opacity:0;
-  filter:drop-shadow(0 0 8px rgba(255,100,150,.5));
-}
-
-@keyframes floatHeart{
-
-  0%{
-    transform:
-      translate3d(0,0,0)
-      rotate(0deg)
-      scale(.7);
-    opacity:0;
-  }
-
-  10%{
-    opacity:.85;
-  }
-
-  50%{
-    transform:
-      translate3d(var(--drift),-50vh,0)
-      rotate(18deg)
-      scale(1);
-    opacity:.8;
-  }
-
-  100%{
-    transform:
-      translate3d(calc(var(--drift) * -1),-115vh,0)
-      rotate(-20deg)
-      scale(.75);
-    opacity:0;
-  }
-}
-
-/* FOOTER */
-
-.footer{
-  text-align:center;
-  color:#a9909b;
-  margin-top:55px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 місяців разом ❤️</title>
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            padding: 20px 15px 60px;
+            background-color: #120207;
+            background: linear-gradient(185deg, #1a030c, #0d0105);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #ffffff;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Ефект літаючих неонових сердечок на фоні */
+        .hearts-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; z-index: 1; pointer-events: none;
+        }
+        .heart-particle {
+            position: absolute; display: block;
+            font-size: 22px; bottom: -40px;
+            opacity: 0.3; animation: floatUp 7s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0.5; }
+            100% { transform: translateY(-115vh) rotate(360deg) scale(1.3); opacity: 0; }
+        }
+
+        .wrap {
+            max-width: 450px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Анімація для повільної красивої появи блоків */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #ffb3c1;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* Музичний плеєр */
+        .player-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 77, 109, 0.2);
+            padding: 20px 15px;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        .music-status {
+            font-size: 0.95rem;
+            color: #ffb3c1;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+            height: 36px;
+            border-radius: 50px;
+        }
+
+        /* Кнопка Сюрприз */
+        .btn-surprise {
+            background: #ffffff;
+            color: #670822;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-surprise:active { transform: scale(0.95); }
+
+        /* Стильні картки для контенту */
+        .text-card {
+            background: rgba(27, 8, 14, 0.65);
+            border: 1px solid rgba(255, 77, 109, 0.15);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        .text-card h1 {
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .text-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 22px 0;
+            color: #ffe6eb;
+        }
+        .text-card h2 {
+            font-size: 1.6rem;
+            margin-top: 25px;
+            margin-bottom: 0;
+            color: #fff;
+        }
+
+        /* Автоматична галерея фото з GitHub */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 145px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 77, 109, 0.2);
+            transition: transform 0.3s;
+        }
+        .gallery-grid img:hover { transform: scale(1.04); }
+
+        /* Картки спогадів "І це тільки початок" */
+        .memory-row {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .memory-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+        .memory-desc {
+            font-size: 0.95rem;
+            color: #ffb3c1;
+            line-height: 1.5;
+            margin: 0;
+            opacity: 0.9;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- INTRO -->
-
-<div class="intro-screen" id="introScreen">
-
-  <div class="intro-heart">❤️</div>
-
-  <h1>Для тебе, кохана</h1>
-
-  <p>
-    Маленька історія про наші перші
-    6 місяців разом…
-  </p>
-
-  <button class="intro-btn" id="startBtn">
-    Відкрити сюрприз ✨
-  </button>
-
-</div>
-
-
-<!-- FLOATING HEARTS -->
-
-<div class="floating-hearts" id="floatingHearts"></div>
-
-
-<div class="wrap">
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-heart">
-      ❤️
+    <!-- Сердечка на фоні сайту -->
+    <div class="hearts-bg">
+        <span class="heart-particle" style="left:10%; animation-delay:0s; animation-duration:6s;">❤️</span>
+        <span class="heart-particle" style="left:30%; animation-delay:2s; animation-duration:8s;">💕</span>
+        <span class="heart-particle" style="left:50%; animation-delay:1s; animation-duration:7s;">💖</span>
+        <span class="heart-particle" style="left:70%; animation-delay:4s; animation-duration:5s;">💗</span>
+        <span class="heart-particle" style="left:90%; animation-delay:3s; animation-duration:9s;">❤️</span>
     </div>
 
-    <div class="kicker">
-      наша історія
+    <div class="wrap">
+        <h3>Вибери нашу пісню ❤️</h3>
+        
+        <div class="player-container">
+            <div class="music-status">🎵 Меладзе & i got love</div>
+            <audio src="music.mp3" controls loop></audio>
+        </div>
+
+        <button class="btn-surprise" onclick="alert('Ти моє найбільше щастя в усьому всесвіті! 😘💞')">💝 Натисни на мене</button>
+
+        <!-- Секція 1: Текст кохання -->
+        <div class="text-card fade-in-section">
+            <h1>Для тебе 💞</h1>
+            <p>Кохана моя, я тебе безмежно кохаю ❤️</p>
+            <p>Дякую тобі за всі ці дні, проведені зі мною.</p>
+            <p>Дякую за кожну нашу мить, за твою любов, тепло та ніжність.</p>
+            <p>Ти в мене найкраща і найкрасивіша, наймиліший котик у світі 🥺❤️</p>
+            <p>Я дуже тебе люблю і хочу, щоб таких наших днів було ще безліч. 💕</p>
+            <h2>Цьомаю тебе 🥺💋❤️🔥</h2>
+        </div>
+
+        <!-- Секція 2: Наші моменти (Фото) -->
+        <div class="text-card fade-in-section">
+            <h1>Наші моменти 📸</h1>
+            <p style="margin: 5px 0 15px; color:#ffb3c1;">Наші фотографії ❤️</p>
+            
+            <div class="gallery-grid">
+                <img src="photo1.jpg.JPG" alt="Миті 1">
+                <img src="photo2.jpg.JPG" alt="Миті 2">
+                <img src="photo3.jpg.JPG" alt="Миті 3">
+                <img src="photo4.jpg.JPG" alt="Миті 4">
+                <img src="photo5.jpg.JPG" alt="Миті 5">
+                <img src="photo6.jpg.JPG" alt="Миті 6">
+                <img src="photo7.jpg.JPG" alt="Миті 7">
+                <img src="photo8.jpg.JPG" alt="Миті 8">
+            </div>
+        </div>
+
+        <!-- Секція 3: Спогади та Плани -->
+        <div class="text-card fade-in-section" style="margin-bottom: 20px;">
+            <h1 style="font-size: 1.9rem; margin-bottom: 25px;">І це тільки початок ✨</h1>
+            
+            <div class="memory-row">
+                <div class="memory-title">🤍 Наші обійми</div>
+                <p class="memory-desc">Місце, де завжди добре.</p>
+            </div>
+
+            <div class="memory-row">
+                <div class="memory-title">💕 Наші вечори</div>
+                <p class="memory-desc">Навіть звичайний вечір з тобою стає особливим.</p>
+            </div>
+
+            <div class="memory-row">
+                <div class="memory-title">♾️ Наші плани</div>
+                <p class="memory-desc">Нехай попереду буде ще дуже багато наших «вперше».</p>
+            </div>
+        </div>
     </div>
 
-    <h1>
-      6 місяців<br>
-      разом ❤️
-    </h1>
-
-    <p class="subtitle">
-      Пів року любові, тепла, сміху
-      та найкращих моментів разом.
-    </p>
-
-  </section>
-
-
-  <!-- MUSIC -->
-
-  <section class="section">
-
-    <div class="card music-panel">
-
-      <div class="music-icon">
-        🎶
-      </div>
-
-      <h2>
-        Наша музика
-      </h2>
-
-      <p>
-        Вибери нашу пісню ❤️
-      </p>
-
-      <label class="btn">
-
-        🎵 Вибрати пісню
-
-        <input
-          class="music-input"
-          id="musicInput"
-          type="file"
-          accept="audio/*"
-        >
-
-      </label>
-
-      <button
-        class="btn"
-        id="clearMusic"
-        type="button"
-        style="margin-left:7px"
-      >
-        🗑️
-      </button>
-
-      <div
-        class="music-name"
-        id="musicName"
-      >
-        Музика ще не додана
-      </div>
-
-      <audio
-        id="musicPlayer"
-        controls
-        loop
-        preload="auto"
-      ></audio>
-
-    </div>
-
-  </section>
-
-
-  <!-- SECRET -->
-
-  <div class="surprise-wrap">
-
-    <button
-      class="surprise-btn"
-      id="surpriseBtn"
-    >
-      💌 Натисни на мене
-    </button>
-
-    <div
-      class="secret-message"
-      id="secretMessage"
-    >
-
-      <span class="secret-heart">
-        💖
-      </span>
-
-      <p>
-        Ти — моя найулюбленіша людина.<br>
-        І я щодня радий, що саме ти поруч зі мною.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- LOVE -->
-
-  <section class="section">
-
-    <div class="card">
-
-      <h2>
-        Для тебе ❤️
-      </h2>
-
-      <div class="love-text">
-
-        <p class="love-line">
-          Кохана моя, я тебе безмежно кохаю ❤️
-        </p>
-
-        <p class="love-line">
-          Дякую тобі за всі ці дні,
-          проведені зі мною.
-        </p>
-
-        <p class="love-line">
-          Дякую за кожну нашу мить,
-          за твою любов, тепло та ніжність.
-        </p>
-
-        <p class="love-line">
-          Ти в мене найкраща і найкрасивіша,
-          наймиліший котик у світі 🥹❤️‍🔥
-        </p>
-
-        <p class="love-line">
-          Я дуже тебе люблю і хочу,
-          щоб таких наших днів було ще безліч.
-        </p>
-
-        <p class="love-line highlight">
-          Цьомаю тебе 🥹💋❤️❤️‍🔥
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PHOTOS -->
-
-  <section class="section">
-
-    <div class="card">
-
-      <h2>
-        Наші моменти 📸
-      </h2>
-
-      <p>
-        Наші фотографії ❤️
-      </p>
-
-      <div style="text-align:center;margin:20px 0">
-
-        <label class="btn">
-
-          📷 Додати фото
-
-          <input
-            id="photoPicker"
-            type="file"
-            accept="image/*"
-            multiple
-            hidden
-          >
-
-        </label>
-
-        <button
-          class="btn"
-          id="clearPhotos"
-          type="button"
-          style="margin-left:7px"
-        >
-          🗑️ Очистити
-        </button>
-
-        <p
-          id="photoHint"
-          style="font-size:13px"
-        >
-          Додані фото зберігаються
-          у цьому браузері.
-        </p>
-
-      </div>
-
-      <div
-        class="gallery"
-        id="gallery">
-      
-<img src="photo1.jpg.JPG" alt="Фото 1">
-<img src="photo2.jpg.JPG" alt="Фото 2">
-<img src="photo3.jpg.JPG" alt="Фото 3">
-<img src="photo4.jpg.JPG" alt="Фото 4">
-<img src="photo5.jpg.JPG" alt="Фото 5">
-<img src="photo6.jpg.JPG" alt="Фото 6">
-<img src="photo7.jpg.JPG" alt="Фото 7">
-<img src="photo8.jpg.JPG" alt="Фото 8">
-</div>
-      
-
-  </section>
-
-
-  <!-- MEMORIES -->
-
-  <section class="section">
-
-    <div class="card">
-
-      <h2>
-        І це тільки початок ✨
-      </h2>
-
-      <div class="memory">
-
-        <b>
-          🤍 Наші обійми
-        </b>
-
-        <br>
-
-        Місце, де завжди добре.
-
-      </div>
-
-
-      <div class="memory">
-
-        <b>
-          🌙 Наші вечори
-        </b>
-
-        <br>
-
-        Навіть звичайний вечір
-        з тобою стає особливим.
-
-      </div>
-
-
-      <div class="memory">
-
-        <b>
-          ♾️ Наші плани
-        </b>
-
-        <br>
-
-        Нехай попереду буде ще
-        дуже багато наших «вперше».
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FINAL -->
-
-  <section class="section">
-
-    <div
-      class="card"
-      style="text-align:center"
-    >
-
-      <div style="font-size:50px">
-        💌
-      </div>
-
-      <h2>
-        Я тебе кохаю
-      </h2>
-
-      <p>
-        З 6 місяцями нас.
-        І нехай це буде лише одна
-        з дуже-дуже багатьох наших дат.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <div class="footer">
-    зроблено з любов'ю ❤️
-  </div>
-
-</div>
-
-
-<!-- PHOTO VIEWER -->
-
-<div
-  class="lightbox"
-  id="lightbox"
->
-
-  <button
-    class="close-photo"
-    id="closePhoto"
-  >
-    ×
-  </button>
-
-  <img id="lightboxImg">
-
-</div>
-
-
-<script>
-
-/* =========================
-   HEARTS
-========================= */
-
-const heartsContainer =
-  document.getElementById("floatingHearts");
-
-const heartSymbols = [
-  "❤️",
-  "💕",
-  "💗",
-  "💖",
-  "💓",
-  "💘",
-  "💝"
-];
-
-function createHeart(){
-
-  const heart =
-    document.createElement("div");
-
-  heart.className =
-    "floating-heart";
-
-  heart.textContent =
-    heartSymbols[
-      Math.floor(
-        Math.random() *
-        heartSymbols.length
-      )
-    ];
-
-  heart.style.left =
-    Math.random() * 100 + "%";
-
-  heart.style.setProperty(
-    "--size",
-    (14 + Math.random() * 25) + "px"
-  );
-
-  heart.style.setProperty(
-    "--duration",
-    (6 + Math.random() * 7) + "s"
-  );
-
-  heart.style.setProperty(
-    "--drift",
-    (-80 + Math.random() * 160) + "px"
-  );
-
-  heartsContainer.appendChild(heart);
-
-  setTimeout(
-    () => heart.remove(),
-    14000
-  );
-}
-
-setInterval(
-  createHeart,
-  500
-);
-
-
-/* =========================
-   INTRO
-========================= */
-
-const introScreen =
-  document.getElementById("introScreen");
-
-const startBtn =
-  document.getElementById("startBtn");
-
-startBtn.addEventListener(
-  "click",
-  () => {
-
-    introScreen.classList.add("hide");
-
-    for(
-      let i = 0;
-      i < 20;
-      i++
-    ){
-
-      setTimeout(
-        createHeart,
-        i * 100
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================
-   SURPRISE
-========================= */
-
-const surpriseBtn =
-  document.getElementById("surpriseBtn");
-
-const secretMessage =
-  document.getElementById("secretMessage");
-
-surpriseBtn.addEventListener(
-  "click",
-  () => {
-
-    secretMessage.classList.toggle("open");
-
-    if(
-      secretMessage.classList.contains("open")
-    ){
-
-      surpriseBtn.textContent =
-        "💖 Я тебе ще дещо скажу...";
-
-      for(
-        let i = 0;
-        i < 15;
-        i++
-      ){
-
-        setTimeout(
-          createHeart,
-          i * 100
-        );
-
-      }
-
-    }else{
-
-      surpriseBtn.textContent =
-        "💌 Натисни на мене";
-
-    }
-
-  }
-);
-
-
-/* =========================
-   LOVE TEXT ANIMATION
-========================= */
-
-const loveLines =
-  document.querySelectorAll(
-    ".love-line"
-  );
-
-loveLines.forEach(
-  (line,index) => {
-
-    setTimeout(
-      () => line.classList.add("show"),
-      800 + index * 900
-    );
-
-  }
-);
-
-
-/* =========================
-   DATABASE
-========================= */
-
-const DB_NAME =
-  "love_site_database";
-
-const DB_VERSION = 1;
-
-const STORE =
-  "media";
-
-function openDB(){
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const request =
-        indexedDB.open(
-          DB_NAME,
-          DB_VERSION
-        );
-
-      request.onupgradeneeded =
-        () => {
-
-          request.result
-            .createObjectStore(
-              STORE
-            );
-
-        };
-
-      request.onsuccess =
-        () => resolve(
-          request.result
-        );
-
-      request.onerror =
-        () => reject(
-          request.error
-        );
-
-    }
-  );
-
-}
-
-
-async function dbPut(
-  key,
-  value
-){
-
-  const db =
-    await openDB();
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const transaction =
-        db.transaction(
-          STORE,
-          "readwrite"
-        );
-
-      transaction
-        .objectStore(STORE)
-        .put(
-          value,
-          key
-        );
-
-      transaction.oncomplete =
-        () => {
-
-          db.close();
-
-          resolve();
-
-        };
-
-      transaction.onerror =
-        () => {
-
-          db.close();
-
-          reject(
-            transaction.error
-          );
-
-        };
-
-    }
-  );
-
-}
-
-
-async function dbGet(
-  key
-){
-
-  const db =
-    await openDB();
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const transaction =
-        db.transaction(
-          STORE,
-          "readonly"
-        );
-
-      const request =
-        transaction
-          .objectStore(STORE)
-          .get(key);
-
-      request.onsuccess =
-        () => resolve(
-          request.result
-        );
-
-      request.onerror =
-        () => reject(
-          request.error
-        );
-
-      transaction.oncomplete =
-        () => db.close();
-
-    }
-  );
-
-}
-
-
-async function dbDelete(
-  key
-){
-
-  const db =
-    await openDB();
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const transaction =
-        db.transaction(
-          STORE,
-          "readwrite"
-        );
-
-      transaction
-        .objectStore(STORE)
-        .delete(key);
-
-      transaction.oncomplete =
-        () => {
-
-          db.close();
-
-          resolve();
-
-        };
-
-      transaction.onerror =
-        () => {
-
-          db.close();
-
-          reject(
-            transaction.error
-          );
-
-        };
-
-    }
-  );
-
-}
-
-
-function readAsDataURL(
-  file
-){
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        () => resolve(
-          reader.result
-        );
-
-      reader.onerror =
-        () => reject(
-          reader.error
-        );
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-const musicInput =
-  document.getElementById(
-    "musicInput"
-  );
-
-const musicPlayer =
-  document.getElementById(
-    "musicPlayer"
-  );
-
-const musicName =
-  document.getElementById(
-    "musicName"
-  );
-
-const clearMusic =
-  document.getElementById(
-    "clearMusic"
-  );
-
-
-musicInput.addEventListener(
-  "change",
-  async () => {
-
-    const file =
-      musicInput.files[0];
-
-    if(!file)
-      return;
-
-    const url =
-      URL.createObjectURL(
-        file
-      );
-
-    musicPlayer.src =
-      url;
-
-    musicPlayer.load();
-
-    musicName.textContent =
-      "🎶 " + file.name;
-
-    musicPlayer
-      .play()
-      .catch(
-        () => {}
-      );
-
-    try{
-
-      const data =
-        await readAsDataURL(
-          file
-        );
-
-      await dbPut(
-        "music",
-        {
-          name:file.name,
-          data:data
-        }
-      );
-
-    }catch(error){
-
-      console.log(
-        "Музика не збережена",
-        error
-      );
-
-    }
-
-  }
-);
-
-
-clearMusic.addEventListener(
-  "click",
-  async () => {
-
-    await dbDelete(
-      "music"
-    );
-
-    musicPlayer.removeAttribute(
-      "src"
-    );
-
-    musicPlayer.load();
-
-    musicName.textContent =
-      "Музика ще не додана";
-
-  }
-);
-
-
-async function loadMusic(){
-
-  try{
-
-    const saved =
-      await dbGet(
-        "music"
-      );
-
-    if(saved){
-
-      musicPlayer.src =
-        saved.data;
-
-      musicName.textContent =
-        "🎶 " + saved.name;
-
-    }
-
-  }catch(error){
-
-    console.log(error);
-
-  }
-
-}
-
-
-/* =========================
-   PHOTOS
-========================= */
-
-const photoPicker =
-  document.getElementById(
-    "photoPicker"
-  );
-
-const gallery =
-  document.getElementById(
-    "gallery"
-  );
-
-const photoHint =
-  document.getElementById(
-    "photoHint"
-  );
-
-const clearPhotos =
-  document.getElementById(
-    "clearPhotos"
-  );
-
-
-function renderPhotos(
-  photos
-){
-
-  gallery.innerHTML =
-    "";
-
-  photos.forEach(
-    (src,index) => {
-
-      const img =
-        document.createElement(
-          "img"
-        );
-
-      img.src =
-        src;
-
-      img.alt =
-        "Наш момент " +
-        (index + 1);
-
-      img.addEventListener(
-        "click",
-        () => openPhoto(src)
-      );
-
-      gallery.appendChild(
-        img
-      );
-
-      setTimeout(
-        () =>
-          img.classList.add(
-            "show"
-          ),
-        index * 150
-      );
-
-    }
-  );
-
-  photoHint.textContent =
-    photos.length
-      ? "Збережено фото: " +
-        photos.length +
-        " ❤️"
-      : "Фото ще не додані.";
-
-}
-
-
-photoPicker.addEventListener(
-  "change",
-  async () => {
-
-    const files =
-      Array.from(
-        photoPicker.files
-      )
-      .filter(
-        file =>
-          file.type.startsWith(
-            "image/"
-          )
-      );
-
-    if(!files.length)
-      return;
-
-    const oldPhotos =
-      await dbGet(
-        "photos"
-      ) || [];
-
-    const newPhotos =
-      await Promise.all(
-        files.map(
-          readAsDataURL
-        )
-      );
-
-    const photos =
-      oldPhotos
-        .concat(newPhotos)
-        .slice(0,20);
-
-    await dbPut(
-      "photos",
-      photos
-    );
-
-    renderPhotos(
-      photos
-    );
-
-    photoPicker.value =
-      "";
-
-  }
-);
-
-
-clearPhotos.addEventListener(
-  "click",
-  async () => {
-
-    await dbDelete(
-      "photos"
-    );
-
-    renderPhotos([]);
-
-  }
-);
-
-
-async function loadPhotos(){
-
-  try{
-
-    const photos =
-      await dbGet(
-        "photos"
-      ) || [];
-
-    renderPhotos(
-      photos
-    );
-
-  }catch(error){
-
-    console.log(error);
-
-  }
-
-}
-
-
-/* =========================
-   PHOTO LIGHTBOX
-========================= */
-
-const lightbox =
-  document.getElementById(
-    "lightbox"
-  );
-
-const lightboxImg =
-  document.getElementById(
-    "lightboxImg"
-  );
-
-const closePhoto =
-  document.getElementById(
-    "closePhoto"
-  );
-
-
-function openPhoto(
-  src
-){
-
-  lightboxImg.src =
-    src;
-
-  lightbox.classList.add(
-    "show"
-  );
-
-}
-
-
-function closePhotoViewer(){
-
-  lightbox.classList.remove(
-    "show"
-  );
-
-  lightboxImg.src =
-    "";
-
-}
-
-
-closePhoto.addEventListener(
-  "click",
-  closePhotoViewer
-);
-
-
-lightbox.addEventListener(
-  "click",
-  event => {
-
-    if(
-      event.target ===
-      lightbox
-    ){
-
-      closePhotoViewer();
-
-    }
-
-  }
-);
-
-
-/* =========================
-   START
-========================= */
-
-loadMusic();
-
-loadPhotos();
-
-</script>
-<div class="audio-player-box">
-    <p>🎵 Меладзе & i got love</p>
-    <audio src="music.mp3" controls loop></audio>
-</div>
+    <!-- Скрипт для плавного відстеження скролу екрана та появи елементів -->
+    <script>
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observerOptions = { root: null, threshold: 0.1, rootMargin: "0px" };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => { observer.observe(section); });
+    </script>
 
 </body>
 </html>
